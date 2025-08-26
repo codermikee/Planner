@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Remah's Planner</title>
+		<!-- Fonts: Monoton for titles, IBM Plex Mono for body -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Monoton&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="style.css" />
+		<!-- jsPDF and AutoTable (local for offline export) -->
+		<script src="vendor/jspdf.umd.min.js"></script>
+		<script src="vendor/jspdf.plugin.autotable.min.js"></script>
+	</head>
+	<body>
+		<main class="container">
+			<header>
+				<h1 id="pageTitle">Today's Agenda</h1>
+				<p class="muted">Set your tasks properly, Remah!</p>
+			</header>
+
+			<section class="card">
+				<div class="toolbar">
+					<div class="toolbar-group">
+						<label for="plannerTitle" class="muted">Title</label>
+						<input id="plannerTitle" class="time-input" placeholder="Today's Agenda" />
+					</div>
+					<div class="toolbar-group">
+						<label for="dayStart" class="muted">Day Start</label>
+						<input id="dayStart" class="time-input" placeholder="08:00 AM" />
+						<button type="button" id="dayStartToggle" class="btn small ghost" aria-label="Toggle AM/PM for day start">AM/PM</button>
+					</div>
+					<div class="toolbar-group">
+						<label for="dayEnd" class="muted">Day End</label>
+						<input id="dayEnd" class="time-input" placeholder="09:00 PM" />
+						<button type="button" id="dayEndToggle" class="btn small ghost" aria-label="Toggle AM/PM for day end">AM/PM</button>
+					</div>
+					<div class="toolbar-sep" role="separator" aria-hidden="true"></div>
+					<button id="addTaskBtn" class="btn">+ Add Task</button>
+				</div>
+
+				<div id="tasks" class="tasks">
+					<!-- Task rows injected here -->
+				</div>
+
+				<div class="actions">
+					<button id="exportBtn" class="btn primary">Get Report (PDF)</button>
+				</div>
+			</section>
+
+			<section class="preview card">
+				<h2 class="section-title">Preview</h2>
+				<div class="table-wrap">
+					<table id="previewTable">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Task</th>
+								<th>Time (H:MM:SS)</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+				<div id="totals" class="footer"></div>
+			</section>
+		</main>
+
+		<script src="index.js"></script>
+	</body>
+	</html>
